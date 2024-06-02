@@ -7,8 +7,8 @@ datasources:
         jsonData:
           authType: keys
           defaultRegion: ap-northeast-1
-          # assumeRoleArn: arn:aws:iam::243795305209:role/EKS-CloudWatch-Role
-        secureJsonData:
+          assumeRoleArn: arn:aws:iam::{Account ID}:role/EKS-CloudWatch-Role
+        secureJsonData:z
           aws_access_key_id: your_access_key_id
           aws_secret_access_key: your_secret_access_key
 
