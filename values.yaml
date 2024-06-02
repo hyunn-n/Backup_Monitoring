@@ -1,0 +1,32 @@
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: CloudWatch
+        type: cloudwatch
+        jsonData:
+          authType: keys
+          defaultRegion: ap-northeast-1
+          # assumeRoleArn: arn:aws:iam::243795305209:role/EKS-CloudWatch-Role
+        secureJsonData:
+          aws_access_key_id: your_access_key_id
+          aws_secret_access_key: your_secret_access_key
+
+grafana.ini:
+  auth.anonymous:
+    enabled: true
+
+service:
+  type: LoadBalancer
+
+rbac:
+  create: true
+
+readinessProbe:
+  httpGet:
+    path: /api/health
+    port: 3000
+  initialDelaySeconds: 60
+  timeoutSeconds: 30
+  periodSeconds: 10
+  failureThreshold: 6
